@@ -1,0 +1,218 @@
+/* Condolence Thanks Preview Styles */
+:root {
+  /* Condolence Thanks Font Size Variable */
+  --condolence-font-size-increase: 0px;
+
+  /* Base Font Sizes */
+  --condolence-header-base: 40px; /* Header title */
+  --condolence-family-name-base: 64px; /* Family name */
+  --condolence-family-text-base: 48px; /* Family text */
+  --condolence-deceased-name-base: 56px; /* Deceased name */
+  --condolence-text-base: 37px; /* Condolence text */
+  --condolence-gratitude-base: 37px; /* Gratitude text */
+
+  /* Mobile Responsive Base Sizes */
+  --condolence-mobile-header: 15px;
+  --condolence-mobile-family-name: 25px;
+  --condolence-mobile-family-text: 36px;
+  --condolence-mobile-deceased-name: 25px;
+  --condolence-mobile-text: 15px;
+  --condolence-mobile-gratitude: 15px;
+}
+
+.condelence-thanks-preview {
+  width: 1080px;
+  height: 1080px;
+  background: linear-gradient(to top, #ffe2e2, #fdf7f7);
+  font-family: "Amiri", serif;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 100px;
+  position: relative;
+}
+
+.watermark-background {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%) rotate(-15deg);
+  opacity: 0.1;
+  width: 75%;
+  pointer-events: none;
+}
+
+.header-section {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background-color: #fff6f4;
+  width: 450px;
+  height: 100px;
+  margin: 60px auto 30px auto;
+}
+
+.header-title {
+  font-size: calc(
+    var(--condolence-header-base) + var(--condolence-font-size-increase)
+  );
+  font-weight: 500;
+  color: #c40000;
+  background-color: #ff707079;
+  padding: 15px 30px;
+  border-radius: 50px;
+}
+
+.tawasul-logo-thanks {
+  display: flex;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 15;
+}
+
+.tawasul-logo-thanks img {
+  width: 100px;
+  height: 100px;
+}
+
+.hand-icon {
+  transform: scaleX(-1);
+}
+
+.main-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.family-text {
+  font-size: calc(
+    var(--condolence-family-text-base) + var(--condolence-font-size-increase)
+  );
+}
+
+.family-text h1 {
+  margin-bottom: -10px;
+  /* font-weight: bold; */
+}
+
+.family-name {
+  font-weight: bold;
+  height: min-content;
+  color: #c40000;
+  margin: 0px 0px;
+  font-size: calc(
+    var(--condolence-family-name-base) + var(--condolence-font-size-increase)
+  );
+}
+
+.condolence-text {
+  margin: 5px auto;
+  font-size: calc(
+    var(--condolence-text-base) + var(--condolence-font-size-increase)
+  );
+}
+
+.deceased-name-c {
+  font-size: calc(
+    var(--condolence-deceased-name-base) + var(--condolence-font-size-increase)
+  );
+  font-weight: bold;
+  color: #9d6600;
+  margin-bottom: 20px;
+}
+
+.gratitude-section {
+  text-align: center;
+}
+
+.gratitude-text {
+  font: bold;
+  font-size: calc(
+    var(--condolence-gratitude-base) + var(--condolence-font-size-increase)
+  );
+}
+
+/* Responsive scaling */
+@media (max-width: 768px) {
+  :root {
+    --condolence-header-base: var(--condolence-mobile-header);
+    --condolence-family-name-base: var(--condolence-mobile-family-name);
+    --condolence-family-text-base: var(--condolence-mobile-family-text);
+    --condolence-deceased-name-base: var(--condolence-mobile-deceased-name);
+    --condolence-text-base: var(--condolence-mobile-text);
+    --condolence-gratitude-base: var(--condolence-mobile-gratitude);
+  }
+
+  .condelence-thanks-preview {
+    width: 768px;
+    height: 768px;
+    padding: 0px 60px;
+  }
+
+  .header-section {
+    width: 350px;
+    height: 80px;
+    margin: 20px auto 0px;
+  }
+
+  .tawasul-logo-thanks img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .condolence-text {
+    margin: 5px auto;
+  }
+
+  .gratitude-text {
+    margin: 5px auto;
+  }
+  .deceased-name-c {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --condolence-header-base: var(--condolence-mobile-header);
+    --condolence-family-name-base: var(--condolence-mobile-family-name);
+    --condolence-family-text-base: var(--condolence-mobile-family-text);
+    --condolence-deceased-name-base: var(--condolence-mobile-deceased-name);
+    --condolence-text-base: var(--condolence-mobile-text);
+    --condolence-gratitude-base: var(--condolence-mobile-gratitude);
+  }
+
+  .condelence-thanks-preview {
+    width: 480px;
+    height: 480px;
+    padding: 0px 10px;
+  }
+
+  .header-section {
+    width: 280px;
+    height: 60px;
+    margin: 30px auto 15px auto;
+  }
+
+  .tawasul-logo-thanks {
+    top: 20px;
+    right: 40px;
+  }
+
+  .tawasul-logo-thanks img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .condolence-text {
+    margin: 10px auto;
+  }
+
+  .gratitude-text {
+    margin: 10px auto;
+  }
+}

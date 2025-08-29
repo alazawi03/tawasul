@@ -1,0 +1,359 @@
+/* Tawasul Bahrain V2 */
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+:root {
+  --primary-color: #c40000;
+  --secondary-color: #a17400;
+  --main-font: "Vazirmatn", "Cairo", "Tahoma", sans-serif;
+  --top-content-font-size-increase: 20px;
+  --additional-content-increase: 3px;
+  /* Default (lg) scaling */
+  --width-scaling: 1080px;
+  --height-scaling: 1080px;
+}
+
+.islamic-dead-container {
+  width: var(--width-scaling);
+  height: var(--height-scaling);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.islamic-dead-card {
+  --top-content-font-size-increase: 10px;
+  --additional-content-increase: 3px;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "main-content"
+    "bottom-content";
+  width: var(--width-scaling);
+  height: var(--height-scaling);
+  font-family: var(--main-font);
+  background: url("../../../public/islamic-memorial/white-bg.png") no-repeat
+    center center;
+  background-size: cover;
+  direction: rtl;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Tawasul watermark background */
+.islamic-dead-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  width: 75%;
+  height: 75%;
+  background: url("../../../public/islamic-memorial/tawasul.png") no-repeat
+    center center;
+  background-size: contain;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Logo positioned in top right corner */
+.tawasul-logo-rip {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 15;
+  height: auto;
+}
+
+.tawasul-logo-rip img {
+  width: calc(var(--width-scaling) * 0.08333);
+  height: calc(var(--height-scaling) * 0.08333);
+  object-fit: contain;
+}
+
+/* Profile photo positioned absolutely in top-left corner */
+.tawasul-photo-rip {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(var(--width-scaling) * 0.3);
+  height: calc(var(--width-scaling) * 0.3);
+  object-fit: cover;
+  z-index: 10;
+}
+
+/* Ina lilah image at top right */
+.ina-lilah-top {
+  position: absolute;
+  top: 5px;
+  left: calc(var(--width-scaling) * 0.475);
+  width: calc(var(--width-scaling) * 0.3);
+  z-index: 5;
+}
+
+/* When no photo exists, center the ina-lilah image */
+.islamic-dead-card.no-photo .ina-lilah-top {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Main content area */
+.dead-top-content {
+  grid-area: main-content;
+  position: relative;
+  margin-top: calc(var(--height-scaling) * 0.074);
+  right: calc(var(--width-scaling) * 0.0185);
+  width: calc(var(--width-scaling) * 0.648);
+  height: fit-content;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  text-align: center;
+  align-items: center;
+}
+
+/* When no photo exists */
+.islamic-dead-card.no-photo .dead-top-content {
+  width: 100%;
+  right: 0;
+  left: 0;
+  padding: 0px calc(var(--width-scaling) * 0.0185);
+  align-items: center;
+  text-align: center;
+}
+
+/* Also center the bottom content when no photo */
+.islamic-dead-card.no-photo .dead-bottom-content {
+  width: 100%;
+  align-items: flex-start;
+  text-align: right;
+  margin-right: calc(var(--width-scaling) * 0.0139);
+  padding-left: calc(var(--width-scaling) * 0.0185);
+}
+
+/* Age section */
+.age-section,
+.transition-section,
+.name-section,
+.occupation-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.age-text {
+  font-size: calc(40px + var(--top-content-font-size-increase));
+  font-weight: 600;
+  color: #a17400;
+}
+
+.transition-text {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: calc(40px + var(--top-content-font-size-increase));
+}
+
+.deceased-name {
+  font-size: calc(45px + var(--top-content-font-size-increase));
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+}
+
+.occupation-text {
+  font-size: calc(35px + var(--top-content-font-size-increase));
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Extra content styling */
+.extra-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.top-extra-content,
+.top-additional-section {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--height-scaling) * 0.0046);
+  width: 100%;
+  text-align: right;
+  align-items: flex-start;
+  margin-right: calc(var(--width-scaling) * 0.0139);
+  font-size: calc(var(--height-scaling) * 0.0463);
+}
+
+/* Top additional sections styling */
+.top-additional-section {
+  display: flex;
+  justify-content: right;
+  align-items: flex-start;
+  font-size: calc(var(--height-scaling) * 0.0463);
+}
+
+.top-additional-text,
+.bottom-additional-text,
+.additional-text {
+  font-size: calc(30px + var(--additional-content-increase));
+  font-weight: 500;
+  text-align: right;
+  font-family: var(--main-font);
+}
+
+.bottom-additional-section,
+.additional-section {
+  display: flex;
+  justify-content: right;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Bottom content area */
+.dead-bottom-content {
+  grid-area: bottom-content;
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  direction: rtl;
+  text-align: right;
+  padding: 0px calc(var(--width-scaling) * 0.0139);
+  margin-right: calc(var(--width-scaling) * 0.0139);
+}
+
+/* Additional sections styling */
+.additional-section {
+  display: flex;
+  justify-content: right;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.additional-text {
+  font-size: calc(30px + var(--additional-content-increase));
+  font-weight: 500;
+  text-align: right;
+}
+
+.header-icon {
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin-left: 5px;
+}
+
+.header-label {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+/* Responsive Design */
+/* Medium devices (md) - tablets */
+@media (max-width: 1024px) {
+  :root {
+    --width-scaling: 768px;
+    --height-scaling: 768px;
+    --top-content-font-size-increase: 0px;
+    --additional-content-increase: -5px;
+  }
+}
+
+/* Small devices (sm) - mobile phones */
+@media (max-width: 768px) {
+  :root {
+    --width-scaling: 480px;
+    --height-scaling: 480px;
+    --top-content-font-size-increase: -15px;
+    --additional-content-increase: -15px;
+  }
+
+  .islamic-dead-container {
+    padding: 10px;
+    max-width: 480px;
+  }
+
+  .islamic-dead-card {
+    width: var(--width-scaling);
+    height: var(--height-scaling);
+  }
+}
+
+/* Extra small devices (xs) - very small phones */
+@media (max-width: 500px) {
+  :root {
+    --width-scaling: 360px;
+    --height-scaling: 360px;
+    --top-content-font-size-increase: -20px;
+    --additional-content-increase: -20px;
+  }
+
+  .islamic-dead-container {
+    padding: 5px;
+    max-width: 360px;
+  }
+
+  .islamic-dead-card {
+    width: var(--width-scaling);
+    height: var(--height-scaling);
+  }
+}
+
+.memorial-relationship-title {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Font Size Slider Styling for Death Announcement */
+.slider {
+  background: linear-gradient(
+    to right,
+    #fee2e2,
+    #fecaca,
+    #fca5a5,
+    #f87171,
+    #ef4444,
+    #dc2626,
+    #b91c1c,
+    #991b1b
+  );
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 0.8;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

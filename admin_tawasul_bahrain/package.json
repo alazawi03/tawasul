@@ -1,0 +1,42 @@
+{
+  "name": "islamic-memorial-website",
+  "version": "1.0.0",
+  "description": "Islamic memorial website for deceased individuals with Arabic RTL support - Frontend Only",
+  "main": "client/src/index.js",
+  "scripts": {
+    "start": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "test": "cd client && npm test"
+  },
+  "keywords": [
+    "islamic",
+    "memorial",
+    "arabic",
+    "rtl",
+    "react",
+    "frontend"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.16.1",
+    "@aws-amplify/backend-cli": "^1.8.0",
+    "@types/node": "^18.19.120",
+    "aws-cdk-lib": "^2.204.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.25.8",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.848.0",
+    "aws-amplify": "^6.15.4",
+    "canvas": "^3.1.2",
+    "html2canvas": "^1.4.1",
+    "multer": "^2.0.1",
+    "sharp": "^0.34.3"
+  }
+}

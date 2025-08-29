@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "O+rFeaxoBe8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ali Alazawi\\Desktop\\tawasul_launch\\backend\\backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ali Alazawi\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0-preview.5.25277.114\\microsoft.aspnetcore.openapi.10.0.0-preview.5.25277.114.nupkg.sha512",
+    "C:\\Users\\Ali Alazawi\\.nuget\\packages\\microsoft.openapi\\2.0.0-preview.18\\microsoft.openapi.2.0.0-preview.18.nupkg.sha512"
+  ],
+  "logs": []
+}

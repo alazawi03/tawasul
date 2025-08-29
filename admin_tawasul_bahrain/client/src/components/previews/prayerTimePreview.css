@@ -1,0 +1,141 @@
+/* Fixed 1080×1080 to match your design */
+.prayer-card {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+    font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+}
+
+/* Background */
+.prayer-card__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.prayer-card__bg img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.prayer-card__bg--fallback {
+    background: linear-gradient(135deg, #fefef2 0%, #f5f5dc 100%);
+}
+
+/* ------ precise placement to match reference ------ */
+.prayer-card__dates {
+    position: absolute;
+    right: 82px;    /* horizontal position of the dates block */
+    top: 180px;     /* vertical position under the brush */
+    width: 460px;
+    z-index: 2;
+    text-align: right;
+    line-height: 1.25;
+}
+
+.prayer-card__rows {
+    position: absolute;
+    right: 82px;    /* aligns column with dates */
+    top: 325px;     /* where the first row starts */
+    width: 460px;   /* IMPORTANT: real width on desktop */
+    z-index: 2;
+    display: grid;
+    grid-auto-rows: min-content;
+    /* row-gap: px; optional */
+}
+
+.prayer-card__row {
+    display: grid;
+    grid-template-columns: 1fr auto; /* label (right) | time (left) */
+    align-items: baseline;
+    column-gap: 28px;                /* space between label and time */
+    text-align: right;
+    white-space: nowrap;             /* keep 12:36 ص on one line */
+}
+
+/* Typography to match screenshot */
+.prayer-card__hijri {
+    color: #D64545;
+    font-family: "Amiri", "Scheherazade New", serif;
+    font-weight: 700;
+    font-size: 56px;
+    margin: 0 0 10px 0;
+}
+.prayer-card__greg {
+    color: #000;
+    font-size: 40px;
+    margin: 0;
+}
+.prayer-card__label {
+    color: #000;
+    font-family: "Amiri", "Scheherazade New", serif;
+    font-weight: 550;
+    font-size: 42px;
+}
+.prayer-card__time {
+    color: #D64545;
+    font-family: "Cairo", sans-serif;
+    font-weight: 800;
+    font-size: 55px; /* bold, big red times like the ref */
+}
+
+/* =================== MOBILE/RESPONSIVE =================== */
+/* ≤ 1080px — fluid, square, with double-guard so it never collapses */
+@media (max-width: 1080px){
+  .prayer-card{
+    width: 100%;
+    max-width: 1080px;
+    height: auto !important;        /* remove fixed 1080px */
+    aspect-ratio: 1 / 1;            /* primary guard */
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Fallback if aspect-ratio is ignored (some webviews) */
+  @supports not (aspect-ratio: 1 / 1) {
+    .prayer-card::before{
+      content: "";
+      display: block;
+      padding-top: 100%;            /* 1:1 square */
+    }
+  }
+
+  /* convert absolute px positions to % of the 1080 design */
+  .prayer-card__dates{
+    right: 7.59%;   /* 82 / 1080 */
+    top:   16.67%;  /* 180 / 1080 */
+    width: 42.59%;  /* 460 / 1080 */
+  }
+
+  .prayer-card__rows{
+    right: 7.59%;   /* 82 / 1080 */
+    top:   30.09%;  /* 325 / 1080 */
+    width: 42.59%;  /* 460 / 1080 */
+    row-gap: clamp(10px, 2.4vw, 26px);
+    display: grid;
+    grid-auto-rows: min-content;
+  }
+
+  .prayer-card__row{ column-gap: clamp(12px, 2.6vw, 28px); }
+
+  /* type scales */
+  .prayer-card__hijri{ font-size: clamp(22px, 5.2vw, 56px); margin-bottom: clamp(6px, 1vw, 10px); }
+  .prayer-card__greg{ font-size: clamp(14px, 3.7vw, 40px); }
+  .prayer-card__label{ font-size: clamp(16px, 3.9vw, 42px); }
+  .prayer-card__time { font-size: clamp(22px, 5vw, 55px); }
+}
+
+/* very small phones — tiny nudge so rows don’t touch the brush header */
+@media (max-width: 360px){
+  .prayer-card__rows{ top: 31.5%; }
+}
+
+/* (safety) desktop fix — keeps rows at 460px when wider than 1080px */
+@media (min-width: 1081px){
+  .prayer-card__rows{ width: 460px; }
+}

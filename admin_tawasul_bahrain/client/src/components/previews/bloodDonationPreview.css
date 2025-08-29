@@ -1,0 +1,249 @@
+:root {
+  --primary-color: #c40000;
+  --second-color: #a17400;
+
+  /* unified scaling control (affects all text buckets) */
+  --blood-font-size-increase: 0px;
+
+  /* base sizes (desktop) */
+  --blood-main-content-base: 15px;
+  --blood-secondary-content-base: 15px;
+  --blood-rules-base: 15px;
+  --blood-contact-base: 15px;
+
+  /* mobile base sizes */
+  --blood-mobile-main: 16px;
+  --blood-mobile-secondary: 16px;
+  --blood-mobile-rules: 16px;
+  --blood-mobile-contact: 16px;
+}
+
+/* ---------- generic text helpers ---------- */
+.text-to-style {
+  text-align: right;
+  padding: 0 50px;
+}
+
+.important {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* merge color/weight/size into one rule to avoid overrides */
+.secondary-text {
+  color: var(--second-color);
+  font-weight: 600;
+  font-size: calc(var(--blood-secondary-content-base) + var(--blood-font-size-increase)) !important;
+}
+
+.ltr-directon {
+  direction: ltr;
+}
+
+/* ---------- preview root ---------- */
+.previ.preview-card {
+  width: 100%;
+  max-width: 1080px;
+  background-color: #fff;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-height: 400px;
+  height: auto;
+  /* let content decide height */
+}
+
+/* ---------- background ---------- */
+.blood-donation-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.blood-donation-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("../../../public/islamic-memorial/white-bg.png") no-repeat center center;
+  background-size: cover;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.blood-donation-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, #ffe2e2, #fdf7f7);
+  pointer-events: none;
+}
+
+.blood-donation-bg>* {
+  position: relative;
+  z-index: 2;
+  padding: 0 30px 30px;
+}
+
+/* ---------- top visuals ---------- */
+.tawasul-logo-blod {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 15;
+  width: 100%;
+  height: auto;
+}
+
+.tawasul-logo-blod img {
+  object-fit: contain;
+}
+
+.heartbeat-header {
+  position: relative;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.heartbeat-header img {
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---------- typography buckets ---------- */
+.main-font {
+  font-family: "Tajawal", sans-serif;
+  font-size: calc(var(--blood-main-content-base) + var(--blood-font-size-increase));
+  padding: 20px 20px 30px 20px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+}
+
+.waw-font {
+  font-size: calc(var(--blood-main-content-base) + var(--blood-font-size-increase));
+}
+
+.rules,
+.note-text {
+  font-size: calc(var(--blood-rules-base) + var(--blood-font-size-increase)) !important;
+}
+
+.contact-info {
+  font-size: calc(var(--blood-contact-base) + var(--blood-font-size-increase)) !important;
+}
+
+/* ---------- robust RTL ordered list (fixes export positioning) ---------- */
+.donation-rules-list {
+  direction: rtl;
+  list-style: none;
+  /* kill native markers */
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+  font-size: calc(var(--blood-rules-base) + var(--blood-font-size-increase)) !important;
+}
+
+.donation-rules-list li {
+  counter-increment: item;
+  position: relative;
+  text-align: right;
+  padding-right: 1.6em;
+  /* room for number on the right */
+  margin-bottom: 6px;
+  font-size: inherit !important;
+}
+
+.donation-rules-list li::before {
+  content: counter(item) ".";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  color: inherit;
+  /* matches text color */
+  font-size: inherit;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 768px) {
+
+  /* override bases once for mobile */
+  :root {
+    --blood-main-content-base: var(--blood-mobile-main);
+    --blood-secondary-content-base: var(--blood-mobile-secondary);
+    --blood-rules-base: var(--blood-mobile-rules);
+    --blood-contact-base: var(--blood-mobile-contact);
+  }
+
+  .main-font,
+  .waw-font {
+    font-size: calc(var(--blood-mobile-main) + var(--blood-font-size-increase));
+    padding: 8px 6px;
+  }
+
+  .secondary-text {
+    font-size: calc(var(--blood-mobile-secondary) + var(--blood-font-size-increase)) !important;
+  }
+
+  .rules,
+  .note-text,
+  .donation-rules-list,
+  .donation-rules-list li,
+  .contact-info {
+    font-size: calc(var(--blood-mobile-rules) + var(--blood-font-size-increase)) !important;
+  }
+
+  .prevent-wrap {
+    white-space: normal;
+    display: block;
+    line-height: 1.5;
+  }
+
+  .important {
+    font-weight: 600;
+  }
+
+  .blood-donation-bg>* {
+    padding: 0 6px 20px;
+  }
+}
+
+/* ---------- slider ---------- */
+.slider {
+  background: linear-gradient(to right,
+      #fee2e2, #fecaca, #fca5a5, #f87171, #ef4444, #dc2626, #b91c1c, #991b1b);
+  outline: none;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: .8;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}

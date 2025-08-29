@@ -1,0 +1,13 @@
+{
+  "name": "email-function",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.600.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/aws-lambda": "^8.10.119",
+    "typescript": "^5.0.0"
+  }
+}

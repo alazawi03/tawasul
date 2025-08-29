@@ -1,0 +1,185 @@
+/* Prayer Request Responsive Design - Based on Death Announcement Pattern */
+:root {
+  /* Default (lg) scaling */
+  --prayer-width-scaling: 1080px;
+  --prayer-height-scaling: 1080px;
+  --prayer-font-size-increase: 10px;
+}
+
+.prayer-request-container {
+  width: var(--prayer-width-scaling);
+  height: var(--prayer-height-scaling);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.prayer-request-preview {
+  width: var(--prayer-width-scaling);
+  height: var(--prayer-height-scaling);
+  position: relative;
+  font-family: "Amiri", serif;
+  color: #000;
+  background-color: #fdf6f3;
+  padding: calc(100px + var(--prayer-font-size-increase))
+    calc(80px + var(--prayer-font-size-increase))
+    calc(60px + var(--prayer-font-size-increase));
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+  direction: rtl;
+}
+
+/* Tawasul watermark background */
+.prayer-request-preview::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  width: 75%;
+  height: 75%;
+  background: url("../../../public/islamic-memorial/tawasul.png") no-repeat
+    center center;
+  background-size: contain;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tawasul-logo-prayer {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 15;
+  height: auto;
+}
+
+.tawasul-logo-prayer img {
+  width: calc(var(--prayer-width-scaling) * 0.08333);
+  height: calc(var(--prayer-height-scaling) * 0.08333);
+  object-fit: contain;
+}
+
+.prayer-request-header-image {
+  width: calc(var(--prayer-width-scaling) * 0.37);
+  margin: 0 auto calc(30px + var(--prayer-font-size-increase)) auto;
+  display: block;
+  z-index: 2;
+  position: relative;
+  height: auto;
+}
+
+.duaa-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: calc(20px + var(--prayer-font-size-increase));
+}
+
+.duaa-container img {
+  width: calc(var(--prayer-width-scaling) * 0.185);
+  height: auto;
+}
+
+.prayer-request-tag-emoji {
+  font-size: calc(36px + var(--prayer-font-size-increase));
+}
+
+.prayer-request-duaa-text {
+  font-size: calc(28px + var(--prayer-font-size-increase));
+  margin-bottom: calc(20px + var(--prayer-font-size-increase));
+  color: #222;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+.prayer-request-patient-name {
+  font-size: calc(42px + var(--prayer-font-size-increase));
+  color: #c0392b;
+  font-weight: bold;
+  margin-bottom: calc(25px + var(--prayer-font-size-increase));
+  position: relative;
+  z-index: 2;
+  line-height: 1.4;
+}
+
+.prayer-request-closing-text {
+  font-size: calc(24px + var(--prayer-font-size-increase));
+  color: #111;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+.prayer-request-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  z-index: 10;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Medium devices (md) - tablets */
+@media (max-width: 1024px) {
+  :root {
+    --prayer-width-scaling: 768px;
+    --prayer-height-scaling: 768px;
+    --prayer-font-size-increase: -5px;
+  }
+}
+
+/* Small devices (sm) - mobile phones */
+@media (max-width: 768px) {
+  :root {
+    --prayer-width-scaling: 480px;
+    --prayer-height-scaling: 480px;
+    --prayer-font-size-increase: -15px;
+  }
+
+  .prayer-request-container {
+    padding: 10px;
+    max-width: 480px;
+  }
+
+  .prayer-request-preview {
+    width: var(--prayer-width-scaling);
+    height: var(--prayer-height-scaling);
+  }
+}
+
+/* Extra small devices (xs) - very small phones */
+@media (max-width: 500px) {
+  :root {
+    --prayer-width-scaling: 360px;
+    --prayer-height-scaling: 360px;
+    --prayer-font-size-increase: -20px;
+  }
+
+  .prayer-request-container {
+    padding: 5px;
+    max-width: 360px;
+  }
+
+  .prayer-request-preview {
+    width: var(--prayer-width-scaling);
+    height: var(--prayer-height-scaling);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .prayer-request-preview {
+    width: 210mm;
+    height: 297mm;
+    max-width: none;
+    max-height: none;
+    padding: 20mm;
+    page-break-inside: avoid;
+  }
+}
